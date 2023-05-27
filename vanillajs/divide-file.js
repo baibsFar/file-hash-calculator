@@ -13,7 +13,6 @@ function getFileHashSignature(fileReader = new FileReader(), chunksize = 0, file
 
             for (let i = 0; i < filesize; i += chunksize)
                 blocks.push(await generateHash(buffers.slice(i, i + chunksize).join('')))
-            console.log(await generateHash(blocks.join('')))
             resolve(await generateHash(blocks.join('')))
         }
         fileReader.onerror = (e) => reject(e.target.error)
